@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const HttpError = require('./api/lib/utils/http-error');
 // routes
-const apiv1 = require('./api/routes/apiRoutes');
+const apiv1 = require('./api/routes/router');
 
 // INITIALIZE EXPRESS
 let app = express();

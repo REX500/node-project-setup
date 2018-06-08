@@ -1,5 +1,9 @@
 'use strict';
 
-module.exports = {
+async function testFunction() {
+  return true;
+}
 
+module.exports = {
+  testFunction: testFunction
 };
