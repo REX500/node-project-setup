@@ -8,7 +8,7 @@ First clone the repo on your local machine using a terminal or a git client.
 Run `npm install` to install all required dependencies.
 Refer to [Deployment](#Deployment) section on how to deploy and run.
 
-### Prerequisites
+### `Prerequisites`
 
 Node will run on any linux based kernel system as well as Microsoft Windows.
 
@@ -36,21 +36,21 @@ In order to test the system you can use postman and create a simple get request 
 
 Tests not yet initialized, comming soon using Mocha for both PostgreSQL and MongoDB
 
-### And coding style tests
+## Coding styles
 
 All code is written using linter - EsLint to make sure styling is the same in all places.
 Majority of the code is written using the latest ES6 sytanx such as shorthand operators,
 async functions, arrow functions and so on...
 As new and shorter coding syntaxes come out they will be implemented accordingly.
 
-### Setting up on Windows
+## Setting up on Windows
 Only thing Windows users have to do is run the following command anywhere in their terminal
 (not necessarily the project folder):
 `npm install -g win-node-env`
 
 Refer to [this](https://stackoverflow.com/questions/11928013/node-env-is-not-recognized-as-an-internal-or-external-command-operable-comman) post on stackoverflow for more info.
 
-### Deployment
+## `Deployment`
 
 Navigate to project folder in your terminal:
 * On Linux or Mac run the following command: `npm run dev`
