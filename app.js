@@ -35,6 +35,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 50
 app.use(cookieParser());
 app.use(cors());
 
+// your routing starts here
 app.use('/api', apiv1);
 // api(app)
 app.get('/', (req, res) => res.status(200).send({

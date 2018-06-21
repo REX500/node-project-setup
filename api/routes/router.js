@@ -3,9 +3,9 @@ const express = require('express');
 const router = express.Router();
 
 // ::V1 router
-const exampleRouter = require('./client/exampleRouter');
+const exampleRouter = require('./example/exampleRouter');
 
-// /api/clients
-router.use('/clients', exampleRouter);
+// /api/example
+router.use('/example', exampleRouter);
 
 module.exports = router;
