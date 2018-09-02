@@ -12,8 +12,12 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const HttpError = require('./api/lib/utils/http-error');
+const db = require('./api/lib/db/db');
+
 // routes
 const apiv1 = require('./api/routes/router');
+// init db connection
+db(process.env.MONGO_URI);
 
 // INITIALIZE EXPRESS
 let app = express();

@@ -7,9 +7,9 @@ const router = express.Router({mergeParams: true});
 // multer upload middleware
 const multer = require('../../lib/middleware/multer.middleware');
 // to upload a single file
-const uploadSingle = multer('<yourBucketName>').single('file');
+// const uploadSingle = multer('<yourBucketName>').single('file');
 // to upload multiple files
-const uploadMultiple = multer('<yourBucketName>').array('files');
+// const uploadMultiple = multer('<yourBucketName>').array('files');
 
 // controllers
 const clientController = require('../../controllers/exampeClientController/client.controller');
@@ -43,10 +43,10 @@ router.delete('/', (req, res, next) => {
 });
 
 /*  USING MULTER TO UPLOAD FILES TO AWS  */
-router.post('/upload', uploadMultiple, (req, res, next) => {
-  clientController.testFunctionPostUpload({body: req.body, files: req.files})
-    .then((result) => res.json(result))
-    .catch(next);
-});
+// router.post('/upload', uploadMultiple, (req, res, next) => {
+//   clientController.testFunctionPostUpload({body: req.body, files: req.files})
+//     .then((result) => res.json(result))
+//     .catch(next);
+// });
 
 module.exports = router;
