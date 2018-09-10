@@ -14,6 +14,7 @@
   "author": "Filip Malek",
   "license": "MIT",
   "dependencies": {
+    "app-root-path": "^2.1.0",
     "aws-sdk": "^2.206.0",
     "bcrypt": "^1.0.3",
     "body-parser": "~1.16.0",
@@ -49,7 +50,8 @@
     "sequelize": "^4.37.6",
     "serve-favicon": "2.4.5",
     "stream": "0.0.2",
-    "uuid-v4": "^0.1.0"
+    "uuid-v4": "^0.1.0",
+    "winston": "^3.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

@@ -5,7 +5,7 @@ const express = require('express');
 const router = express.Router({mergeParams: true});
 
 // multer upload middleware
-const multer = require('../../lib/middleware/multer.middleware');
+const multer = require('../../lib/middleware/multer.middleware').uploadToAWS;
 // to upload a single file
 const uploadSingle = multer('<yourBucketName>').single('file');
 // to upload multiple files
