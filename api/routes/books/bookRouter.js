@@ -7,9 +7,23 @@ const router = express.Router({ mergeParams: true });
 // controllers
 const bookController = require('../../controllers/bookController/book.controller');
 
-// ENDPOINT: /api/users/ :GET
+// ENDPOINT: /api/books/ :GET
 router.get('/', (req, res, next) => {
   bookController.getBooks()
+    .then((result) => res.json(result))
+    .catch(next);
+});
+
+// ENDPOINT: /api/books/:title :GET
+router.get('/:title', (req, res, next) => {
+  bookController.getBook({title: req.params.title})
+    .then((result) => res.json(result))
+    .catch(next);
+});
+
+// ENDPOINT: /api/books/cache/:title :GET - using memoization
+router.get('/cache/:title', (req, res, next) => {
+  bookController.getBooksCache({title: req.params.title})
     .then((result) => res.json(result))
     .catch(next);
 });

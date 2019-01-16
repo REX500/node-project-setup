@@ -34,6 +34,25 @@ const getBook = async ({title}) => {
   return BookModel.findOne({title});
 };
 
+// using memoization to cache book if its already there
+const getBooksCache = async ({title}) => {
+  // if function doesn't have cache
+  if (!getBooksCache.cache) {
+    getBooksCache.cache = {};
+  }
+  // if cache exists but doesn't have book title
+  if (!getBooksCache.cache[title]) {
+    // get book
+    const book = await BookModel.findOne({title});
+    // save to cache
+    getBooksCache.cache[title] = book;
+    // return result
+    return book;
+  }
+  // if title in cache return cache
+  return getBooksCache.cache[title];
+};
+
 const addBook = ({body}) => {
   let newBook = new BookModel({
     title: body.title,
@@ -71,5 +90,7 @@ const sellBook = async ({body}) => {
 module.exports = {
   addBook,
   getBooks,
-  sellBook
+  getBook,
+  sellBook,
+  getBooksCache
 };
