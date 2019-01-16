@@ -15,6 +15,10 @@ const HttpError = require('./api/lib/utils/http-error');
 const winston = require('./api/lib/utils/winston');
 // routes
 const apiv1 = require('./api/routes/router');
+// db connection
+const db = require('./api/lib/db/db');
+// init db
+db(process.env.MONGO_URI);
 
 // INITIALIZE EXPRESS
 let app = express();
@@ -26,7 +30,8 @@ app.locals.ENV_DEVELOPMENT = process.env.NODE_ENV === 'development';
 // uncomment after placing your favicon in /public
 app.disable('x-powered-by');
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(morgan('dev', {stream: winston.stream}));
+// app.use(morgan('dev', {stream: winston.stream}));
+app.use(morgan('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true, parameterLimit: 50000}));
 app.use(cookieParser());
