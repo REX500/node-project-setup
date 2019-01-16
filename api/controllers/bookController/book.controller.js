@@ -5,6 +5,10 @@ const HttpError = require('./../../lib/utils/http-error');
 
 const BookObject = require('./../objects/book.object').Book;
 const bookIsSoldDecorator = require('./../objects/book.object').isSold;
+const BookStorage = require('./../objects/book.object').BookStorage;
+
+// init book storage - flyweight
+const bookStorage = new BookStorage();
 
 const getBooks = async () => {
   let returnArray = [];
@@ -12,12 +16,16 @@ const getBooks = async () => {
   // get all books
   const books = await BookModel.find({});
   if (books) {
+    bookStorage.logBooks();
     // iterate over them and return book objects
     for (let b of books) {
-      const book = new BookObject(b.title, b.author, b.publishDate, b.price, b.quantity);
-
+      // const book = new BookObject(b.title, b.author, b.publishDate, b.price, b.quantity);
+      // load books into flyweight factory
+      const book = bookStorage.createBook(b.title, b.author, b.publishDate, b.price, b.quantity);
+      
       returnArray.push(book);
     }
+    bookStorage.logBooks();
     return returnArray;
   }
 };

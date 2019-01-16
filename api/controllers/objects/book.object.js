@@ -15,6 +15,33 @@ class Book {
   }
 };
 
+class BookStorage {
+  constructor() {
+    this._booksArray = [];
+  }
+
+  createBook(title, author, publishDate, price, quantity) {
+    let book = this.getBook(title);
+    if (book) {
+      console.log(`Returning an already existing book ${book.title}`);
+      return book;
+    } else {
+      console.log(`Creating a new book ${title}`);
+      const newBook = new Book(title, author, publishDate, price, quantity);
+      this._booksArray.push(newBook);
+      return newBook;
+    }
+  }
+
+  getBook(title) {
+    return this._booksArray.find(book => book._title === title);
+  }
+
+  logBooks() {
+    console.log(this._booksArray);
+  }
+}
+
 // decorators
 const isSold = (book) => {
   book.isSold = true;
@@ -31,5 +58,6 @@ const isSold = (book) => {
 
 module.exports = {
   Book,
-  isSold
+  isSold,
+  BookStorage
 };
